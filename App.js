@@ -1,12 +1,15 @@
 import React from 'react';
 
 import { Provider } from 'react-redux';
-import store from './src/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import {store,persistor} from './src/store';
 import App from './src';
 
 const EnhancedApp = () => 
 (<Provider store={store}>
-  <App />
+  <PersistGate loading={null} persistor={persistor}>
+    <App />
+  </PersistGate>
 </Provider>);
 
 export default EnhancedApp
